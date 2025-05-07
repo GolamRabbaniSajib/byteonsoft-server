@@ -168,21 +168,6 @@ async function run() {
 
 
 
-    // for projects
-
-    // post
-    app.post("/projects", verifyToken, async (req, res) => {
-      const project = req.body;
-      const result = await projectCollection.insertOne(project);
-      res.send(result);
-    });
-
-    // get all projects
-    app.get("/all-projects", async (req, res) => {
-      const result = await projectCollection.find().toArray();
-      res.send(result);
-    });
-
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log(
