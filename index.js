@@ -126,7 +126,7 @@ async function run() {
       res.send(result);
     });
 
-    // get all projects
+    // get all blogs
     app.get("/all-blogs", async (req, res) => {
       const result = await blogCollection.find().toArray();
       res.send(result);
@@ -134,18 +134,18 @@ async function run() {
 
 
 
-    // for projects
+    // for reviews
 
     // post
-    app.post("/projects", verifyToken, async (req, res) => {
-      const project = req.body;
-      const result = await projectCollection.insertOne(project);
+    app.post("/reviews", verifyToken, async (req, res) => {
+      const review = req.body;
+      const result = await reviewCollection.insertOne(review);
       res.send(result);
     });
 
-    // get all projects
-    app.get("/all-projects", async (req, res) => {
-      const result = await projectCollection.find().toArray();
+    // get all reviews
+    app.get("/all-reviews", async (req, res) => {
+      const result = await reviewCollection.find().toArray();
       res.send(result);
     });
 
