@@ -100,6 +100,29 @@ async function run() {
       res.send(result);
     });
 
+    // get a project data by id from db
+    
+        app.get("/project/:id", async (req, res) => {
+          const id = req.params.id;
+          const query = { _id: new ObjectId(id) };
+          const result = await projectCollection.findOne(query);
+          res.send(result);
+        });
+    
+        // update a parcel using put
+    
+        app.put("/update-parcel/:id", verifyToken, async (req, res) => {
+          const id = req.params.id;
+          const parcelData = req.body;
+          const updated = {
+            $set: parcelData,
+          };
+          const option = { upsert: true };
+          const filter = { _id: new ObjectId(id) };
+          const result = await parcelCollection.updateOne(filter, updated, option);
+          res.send(result);
+        });
+
 
     // for members
 
