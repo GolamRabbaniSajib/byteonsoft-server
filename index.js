@@ -156,6 +156,15 @@ async function run() {
     });
 
 
+    // get a blog data by id from db
+    
+    app.get("/blog/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await blogCollection.findOne(query);
+      res.send(result);
+    });
+
 
     // for reviews
 
