@@ -151,18 +151,18 @@ async function run() {
 
 
 
-    // for projects
+    // for services
 
     // post
-    app.post("/projects", verifyToken, async (req, res) => {
-      const project = req.body;
-      const result = await projectCollection.insertOne(project);
+    app.post("/services", verifyToken, async (req, res) => {
+      const service = req.body;
+      const result = await serviceCollection.insertOne(service);
       res.send(result);
     });
 
-    // get all projects
-    app.get("/all-projects", async (req, res) => {
-      const result = await projectCollection.find().toArray();
+    // get all services
+    app.get("/all-services", async (req, res) => {
+      const result = await serviceCollection.find().toArray();
       res.send(result);
     });
 
