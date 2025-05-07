@@ -120,15 +120,15 @@ async function run() {
     // for blogs
 
     // post
-    app.post("/projects", verifyToken, async (req, res) => {
-      const project = req.body;
-      const result = await projectCollection.insertOne(project);
+    app.post("/blogs", verifyToken, async (req, res) => {
+      const blog = req.body;
+      const result = await blogCollection.insertOne(blog);
       res.send(result);
     });
 
     // get all projects
-    app.get("/all-projects", async (req, res) => {
-      const result = await projectCollection.find().toArray();
+    app.get("/all-blogs", async (req, res) => {
+      const result = await blogCollection.find().toArray();
       res.send(result);
     });
 
