@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 // middleware
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://localhost:5174"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "https://byteonsoft-c3d7a.web.app"],
   credentials: true,
   optionSuccessStatus: 200,
 };
@@ -97,6 +97,12 @@ async function run() {
     // get all projects
     app.get("/all-projects", async (req, res) => {
       const result = await projectCollection.find().toArray();
+      res.send(result);
+    });
+
+    // get 8 projects
+    app.get("/recent-projects", async (req, res) => {
+      const result = await projectCollection.find().sort({ createdAt: -1 }).limit(8).toArray();
       res.send(result);
     });
 
