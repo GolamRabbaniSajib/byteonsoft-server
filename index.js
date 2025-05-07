@@ -102,7 +102,7 @@ async function run() {
 
     // get 8 projects
     app.get("/recent-projects", async (req, res) => {
-      const result = await projectCollection.find().sort({ createdAt: -1 }).limit(8).toArray();
+      const result = await projectCollection.find().sort({ createdAt: -1 }).limit(6).toArray();
       res.send(result);
     });
 
