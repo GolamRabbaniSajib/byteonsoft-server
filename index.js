@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 // middleware
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://localhost:5174", "https://byteonsoft-c3d7a.web.app"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "https://byteonsoft-c3d7a.web.app", "https://byteonsoft-c3d7a.web.app/"],
   credentials: true,
   optionSuccessStatus: 200,
 };
